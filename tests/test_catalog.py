@@ -85,7 +85,7 @@ def test_validation_and_stale_preview():
 @pytest.mark.django_db
 def test_supplied_corpus():
     for level, count in [(5, 856), (4, 866), (3, 2124), (2, 1890)]:
-        path = settings.BASE_DIR / "JLPT_VOCAB" / f"JLPT_N{level}_Vocabulary_Fixed.xlsx"
+        path = settings.BASE_DIR / "data" / "vocabulary" / f"JLPT_N{level}_Vocabulary_Fixed.xlsx"
         batch = preview_import(path.read_bytes(), path.name, level, f"jlpt-n{level}")
         assert not batch.errors
         assert len(batch.payload["rows"]) == count

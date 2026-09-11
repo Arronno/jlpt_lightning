@@ -100,7 +100,12 @@ class Command(BaseCommand):
             Profile.local()
             if action == "setup":
                 for level in range(5, 1, -1):
-                    path = settings.BASE_DIR / "JLPT_VOCAB" / f"JLPT_N{level}_Vocabulary_Fixed.xlsx"
+                    path = (
+                        settings.BASE_DIR
+                        / "data"
+                        / "vocabulary"
+                        / f"JLPT_N{level}_Vocabulary_Fixed.xlsx"
+                    )
                     key = f"jlpt-n{level}"
                     if path.exists() and not Dataset.objects.filter(key=key).exists():
                         batch = preview_import(path.read_bytes(), path.name, level, key)

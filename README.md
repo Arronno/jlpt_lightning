@@ -17,7 +17,7 @@ Open **http://127.0.0.1:8765** in your browser. Stop with **Ctrl+C**.
 
 If Windows blocks unsigned PowerShell scripts, use VS Code **Tasks: Run Task → JLPT: Setup (uv)**, then **JLPT: Start app (uv)**. These tasks invoke the workspace's standalone uv executable directly and do not change Windows execution policy.
 
-Setup imports the four supplied workbooks (5,736 words), applies database migrations, and prepares local static assets. Running setup again leaves existing datasets alone; update vocabulary through the import preview in Settings → Manage data.
+Setup imports the four supplied workbooks in `data/vocabulary/` (5,736 words), applies database migrations, and prepares local static assets. Running setup again leaves existing datasets alone; update vocabulary through the import preview in Settings → Manage data.
 
 **There is no Conda environment and no project `.venv`.** The scripts use `uv run --isolated --locked --managed-python`: uv manages Python 3.13 under `.tools/python` and temporary package environments under `.tools/uv-cache`. These are generated caches, not source code. No environment activation is needed. Python packages necessarily execute in an environment; uv owns its lifecycle.
 
@@ -133,6 +133,8 @@ Change dependencies deliberately:
 Stay on the supported Django 5.2 LTS line. Upgrading FSRS requires schedule compatibility tests and a database backup, because serialized scheduler states and parameters are persisted. Do not regenerate the lockfile at launch or silently upgrade packages on a learner's behalf.
 
 ## Structure
+
+`data/vocabulary/` contains the versioned source workbooks. `static/` contains frontend assets; generated assets go into the ignored `staticfiles/` directory. Personal study data and backups live in the application data folder described above.
 
 `learning/catalog.py` handles validated imports and catalog queries; `learning/study.py` owns scheduling and atomic study actions; `learning/storage.py` handles backups and exports. Django views render templates and delegate mutations to those services. Local CSS, small JavaScript modules, and the HTMX asset shipped by `django-htmx` provide the interface without a Node build pipeline.
 

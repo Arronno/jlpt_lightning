@@ -20,7 +20,7 @@ markers = ["browser: requires Playwright Chromium", "corpus: validates the suppl
 [tool.ruff]
 target-version = "py313"
 line-length = 100
-extend-exclude = [".tools", ".runtime", ".conda", "staticfiles", "JLPT_VOCAB", "pytest-cache-files-*"]
+extend-exclude = [".tools", ".runtime", ".conda", "staticfiles", "data/vocabulary", "pytest-cache-files-*"]
 force-exclude = true
 
 [tool.ruff.lint]
