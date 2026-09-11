@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block title %}Study · JLPT Lightning{% endblock %}
+{% block content %}
+<p class="eyebrow">MAKE A LITTLE ROOM TO LEARN</p><h1>How would you like to study?</h1><p class="lede">Choose your focus for this session. Your everyday defaults stay unchanged.</p>
+<div class="two-columns"><section class="panel">
+<form method="post" class="stack-form study-form">{% csrf_token %}
+{{ form.non_field_errors }}{% for field in form.hidden_fields %}{{ field.errors }}{{ field }}{% endfor %}
+{% include 'partials/study_scope.html' %}
+{% for field in form.other_fields %}<p>{{ field.errors }}{{ field.label_tag }}{{ field }}{% if field.help_text %}<span class="helptext">{{ field.help_text }}</span>{% endif %}</p>{% endfor %}
+<button class="button primary large">Begin session ↗</button></form></section>
+<aside><section class="panel tip"><h2>Recall. Reveal. Reflect.</h2>
+<p><strong>Flashcards always use your selected vocabulary</strong>, including words you have already completed. Repeat a lesson or batch whenever you like, up to your chosen session size.</p>
+<p>Flashcards, typing, and quizzes save practice results separately from your review schedule.</p>
+<p>Choose <strong>Scheduled reviews</strong> when you want spaced repetition. Only this mode uses due dates and your daily allowance: {{ remaining }} new words remain today.</p><p class="muted">No timer. No penalties. Stop whenever you like.</p></section>
+{% if active %}<section class="panel"><h3>A session is waiting</h3><p>Starting a nonempty session replaces its queue, while keeping every saved review. An empty selection leaves it available to resume.</p><a class="button" href="{% url 'session' active.pk %}">Resume existing session</a></section>{% endif %}
+{% if presets %}<section class="panel"><h3>Saved presets</h3>{% for preset in presets %}<p><a href="?preset={{ preset.pk }}">{{ preset.name }} →</a></p>{% endfor %}</section>{% endif %}
+</aside></div>{% endblock %}

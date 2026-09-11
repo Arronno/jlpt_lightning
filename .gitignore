@@ -1,0 +1,15 @@
+.venv/
+.conda/
+.tools/
+.runtime/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+.ruff_cache/
+staticfiles/
+test-results/
+playwright-report/
+*.sqlite3*
+*.log
+.env

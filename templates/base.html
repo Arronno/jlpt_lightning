@@ -1,0 +1,36 @@
+{% load static django_htmx %}
+<!doctype html>
+<html lang="en" data-theme="{{ prefs.theme }}" data-font="{{ prefs.font_size }}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="htmx-config" content='{"allowEval":false,"includeIndicatorStyles":false,"defaultSettleDelay":0}'>
+  <title>{% block title %}JLPT Lightning{% endblock %}</title>
+  <link rel="icon" href="{% static 'favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'app.css' %}">
+  {% htmx_script %}<script src="{% static 'app.js' %}" defer></script>
+</head>
+<body hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'>
+<a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar">
+  <a href="{% url 'today' %}" class="brand"><span class="brand-mark" aria-hidden="true">ϟ</span><span>JLPT <strong>Lightning</strong><small>A little Japanese, every day.</small></span></a>
+  <div class="nav-label">YOUR STUDY SPACE</div>
+  <nav aria-label="Main navigation">
+    <a href="{% url 'today' %}" {% if request.resolver_match.url_name == 'today' %}aria-current="page"{% endif %}><span aria-hidden="true">◷</span> Today</a>
+    <a href="{% url 'lessons' %}" {% if request.resolver_match.url_name == 'lessons' %}aria-current="page"{% endif %}><span aria-hidden="true">▤</span> Lessons</a>
+    <a href="{% url 'study' %}" {% if request.resolver_match.url_name == 'study' or request.resolver_match.url_name == 'session' %}aria-current="page"{% endif %}><span aria-hidden="true">▱</span> Study</a>
+    <a href="{% url 'library' %}" {% if request.resolver_match.url_name == 'library' or request.resolver_match.url_name == 'word' or request.resolver_match.url_name == 'collections' %}aria-current="page"{% endif %}><span aria-hidden="true">⌑</span> Library</a>
+    <a href="{% url 'settings' %}" {% if request.resolver_match.url_name == 'settings' or request.resolver_match.url_name == 'data' %}aria-current="page"{% endif %}><span aria-hidden="true">⚙</span> Settings</a>
+  </nav>
+  <div class="sidebar-bottom"><span class="status-dot"></span> Private & on your device<br><small>Your progress belongs to you.</small></div>
+</aside>
+<div class="workspace">
+  <header class="topbar"><span>学び続ける <span class="muted">/ Keep learning</span></span><a href="{% url 'settings' %}" class="profile-chip">{{ prefs.name|first|upper }} <span>{{ prefs.name }}</span></a></header>
+  <main id="main" tabindex="-1">
+    {% for message in messages %}<div class="notice {{ message.tags }}" role="status">{{ message }}</div>{% endfor %}
+    <div id="connection-error" class="notice error" role="alert" hidden>Connection interrupted. Your answer has not been confirmed. Retry when the app is available; duplicate submissions are safe.</div>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>Made for steady progress. <span>JLPT levels follow the imported sources.</span></footer>
+</div>
+</body>
+</html>

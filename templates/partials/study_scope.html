@@ -1,0 +1,5 @@
+<fieldset id="study-scope" class="study-scope"><legend>Choose your vocabulary</legend>
+<p>{{ form.level.errors }}{{ form.level.label_tag }}{{ form.level }}</p>
+<p>{{ form.lesson.errors }}{{ form.lesson.label_tag }}{{ form.lesson }}</p>
+<p>{{ form.batch.errors }}{{ form.batch.label_tag }}{{ form.batch }}{% if form.batch.help_text %}<span class="helptext">{{ form.batch.help_text }}</span>{% endif %}</p>
+</fieldset>

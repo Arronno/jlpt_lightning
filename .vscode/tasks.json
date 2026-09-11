@@ -1,0 +1,53 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "cwd": "${workspaceFolder}",
+    "env": {
+      "UV_CACHE_DIR": "${workspaceFolder}/.tools/uv-cache",
+      "UV_PYTHON_INSTALL_DIR": "${workspaceFolder}/.tools/python"
+    }
+  },
+  "tasks": [
+    {
+      "label": "JLPT: Start app on LAN (phone access)",
+      "type": "process",
+      "command": "${workspaceFolder}/.tools/uv/uv.exe",
+      "args": ["run", "--isolated", "--locked", "--managed-python", "--no-dev", "python", "manage.py", "local", "serve", "--lan"],
+      "problemMatcher": [],
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    },
+    {
+      "label": "JLPT: Refresh editor imports (uv)",
+      "type": "process",
+      "command": "${workspaceFolder}/.tools/uv/uv.exe",
+      "args": ["run", "--isolated", "--locked", "--managed-python", "--no-dev", "python", "scripts/editor.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "JLPT: Start app (uv)",
+      "type": "process",
+      "command": "${workspaceFolder}/.tools/uv/uv.exe",
+      "args": ["run", "--isolated", "--locked", "--managed-python", "--no-dev", "python", "manage.py", "local", "serve"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": [],
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    },
+    {
+      "label": "JLPT: Setup (uv)",
+      "type": "process",
+      "command": "${workspaceFolder}/.tools/uv/uv.exe",
+      "args": ["run", "--isolated", "--locked", "--managed-python", "--no-dev", "python", "scripts/setup.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "JLPT: Check (uv, Edge)",
+      "type": "process",
+      "command": "${workspaceFolder}/.tools/uv/uv.exe",
+      "args": ["run", "--isolated", "--locked", "--managed-python", "pytest", "--browser-channel", "msedge", "-p", "no:cacheprovider"],
+      "options": {"cwd": "${workspaceFolder}", "env": {"JLPT_DATA_DIR": "${workspaceFolder}/.runtime/checks"}},
+      "problemMatcher": []
+    }
+  ]
+}

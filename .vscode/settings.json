@@ -1,0 +1,11 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.tools/python/cpython-3.13-windows-x86_64-none/python.exe",
+  "python.terminal.activateEnvironment": false,
+  "python.analysis.extraPaths": ["${workspaceFolder}/.tools/editor-packages"],
+  "python.analysis.exclude": ["**/.tools/**", "**/.runtime/**", "**/staticfiles/**"],
+  "files.watcherExclude": {
+    "**/.tools/**": true,
+    "**/.runtime/**": true,
+    "**/staticfiles/**": true
+  }
+}
