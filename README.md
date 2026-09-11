@@ -1,6 +1,61 @@
-# JLPT Lightning
+<p align="center">
+  <img src="docs/assets/banner.svg" alt="JLPT Lightning — A little today. A lot over time." width="100%">
+</p>
 
-A private vocabulary learning app built with Django, HTMX, SQLite, and FSRS. Runs on your computer at **http://127.0.0.1:8765**. No account, cloud service, or internet connection is needed for study after setup.
+<p align="center">
+  <strong>A comfortable place to learn Japanese, one word at a time.</strong><br>
+  Repeatable flashcards, spaced repetition, and personal study sets.<br>
+  Runs on your PC. Reaches your phone over your home network.
+</p>
+
+<p align="center">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python 3.13"></a>
+  <a href="https://www.djangoproject.com/"><img src="https://img.shields.io/badge/Django-5.2_LTS-0C4B33?style=for-the-badge&amp;logo=django&amp;logoColor=white" alt="Django 5.2 LTS"></a>
+  <a href="https://htmx.org/"><img src="https://img.shields.io/badge/HTMX-3366CC?style=for-the-badge&amp;logo=htmx&amp;logoColor=white" alt="HTMX"></a>
+  <a href="https://www.sqlite.org/"><img src="https://img.shields.io/badge/SQLite-194C6B?style=for-the-badge&amp;logo=sqlite&amp;logoColor=white" alt="SQLite"></a>
+  <a href="https://open-spaced-repetition.github.io/py-fsrs/fsrs.html"><img src="https://img.shields.io/badge/FSRS-Spaced_repetition-6554C0?style=for-the-badge" alt="FSRS spaced repetition"></a>
+</p>
+
+<p align="center">
+  <a href="https://docs.astral.sh/uv/"><img src="https://img.shields.io/badge/uv-DE5FE9?style=for-the-badge&amp;logo=uv&amp;logoColor=white" alt="uv"></a>
+  <a href="https://docs.astral.sh/ruff/"><img src="https://img.shields.io/badge/Ruff-D7FF64?style=for-the-badge&amp;logo=ruff&amp;logoColor=263047" alt="Ruff"></a>
+  <a href="https://docs.pytest.org/"><img src="https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&amp;logo=pytest&amp;logoColor=white" alt="pytest"></a>
+  <a href="https://playwright.dev/python/"><img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge" alt="Playwright"></a>
+  <img src="https://img.shields.io/badge/Built_with-Codex-292638?style=for-the-badge" alt="Built with Codex">
+</p>
+
+<p align="center">
+  <a href="#quick-start">Quick start</a> ·
+  <a href="#study">Study modes</a> ·
+  <a href="#open-the-app-on-your-phone-at-home">Phone access</a> ·
+  <a href="#vocabulary-imports">Import vocabulary</a> ·
+  <a href="#data-and-backups">Backups</a>
+</p>
+
+---
+
+## Your words. Your pace.
+
+| Learn comfortably | Make it yours | Keep it local |
+| --- | --- | --- |
+| Repeat any lesson or batch whenever you like | Collections, bookmarks, tags, and personal notes | SQLite storage with durable session progress |
+| FSRS scheduled reviews, typing, and meaning quizzes | Light/dark themes, Japanese text size, and examples | No account or cloud service required |
+| Keyboard shortcuts and Japanese IME support | Saved presets, card directions, and session sizes | Workbook imports, exports, and restorable backups |
+
+**5,736 supplied words across N5–N2**, organized into source lessons and batches of up to 20 words. N1 is ready for your own imports. Core study works without internet after setup; phone access uses the running PC on your home network.
+
+## Quick start
+
+With [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, run these commands from the project folder:
+
+```powershell
+uv run --isolated --locked --managed-python --no-dev python manage.py local setup
+uv run --isolated --locked --managed-python --no-dev python manage.py local serve
+```
+
+Open **http://127.0.0.1:8765**, choose a lesson or batch, and start with **Flashcards**. Use **Space** to reveal and **1–4** to rate your recall. Stop the server with **Ctrl+C**.
+
+For the workspace's uv installation, VS Code tasks, and editor setup, follow the Windows instructions below.
 
 ## Run on Windows — uv only
 
@@ -135,6 +190,8 @@ Stay on the supported Django 5.2 LTS line. Upgrading FSRS requires schedule comp
 ## Structure
 
 `data/vocabulary/` contains the versioned source workbooks. `static/` contains frontend assets; generated assets go into the ignored `staticfiles/` directory. Personal study data and backups live in the application data folder described above.
+
+`docs/assets/` contains repository presentation assets, including the README banner. Technology badges use [Shields.io](https://shields.io/); edit their labels and links in this README when the stack changes.
 
 `learning/catalog.py` handles validated imports and catalog queries; `learning/study.py` owns scheduling and atomic study actions; `learning/storage.py` handles backups and exports. Django views render templates and delegate mutations to those services. Local CSS, small JavaScript modules, and the HTMX asset shipped by `django-htmx` provide the interface without a Node build pipeline.
 

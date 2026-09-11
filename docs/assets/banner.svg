@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title description">
+  <title id="title">JLPT Lightning</title>
+  <desc id="description">A little today. A lot over time. A purple vocabulary card with the Japanese word manabu, meaning to learn.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#161526"/>
+      <stop offset="1" stop-color="#30234e"/>
+    </linearGradient>
+    <linearGradient id="card" x2="1" y2="1">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ece7ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" rx="24" fill="url(#background)"/>
+  <circle cx="1090" cy="70" r="220" fill="#b39aff" opacity=".05"/>
+  <circle cx="1020" cy="350" r="260" fill="none" stroke="#b39aff" stroke-opacity=".12"/>
+  <circle cx="1020" cy="350" r="310" fill="none" stroke="#b39aff" stroke-opacity=".07"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="60" y="54" width="42" height="46" rx="12" fill="#aa93f5"/>
+    <path d="M84 60 69 81h11l-3 15 16-23H82Z" fill="#1e1832"/>
+    <text x="117" y="84" fill="#d4c8fa" font-size="15" font-weight="600" letter-spacing="2">YOUR JAPANESE STUDY SPACE</text>
+    <text x="58" y="169" fill="#faf8ff" font-size="62" font-weight="700" letter-spacing="-2">JLPT Lightning</text>
+    <text x="62" y="219" fill="#e1d9f3" font-size="26">A little today. A lot over time.</text>
+    <text x="62" y="260" fill="#b6abc9" font-size="17">Learn at your pace. Keep your progress close.</text>
+    <g font-size="13" font-weight="600" text-anchor="middle">
+      <rect x="62" y="309" width="156" height="32" rx="16" fill="#403255"/>
+      <text x="140" y="330" fill="#e1d7f9">5,736 source words</text>
+      <rect x="230" y="309" width="126" height="32" rx="16" fill="#403255"/>
+      <text x="293" y="330" fill="#e1d7f9">N5–N2 included</text>
+      <rect x="368" y="309" width="124" height="32" rx="16" fill="#403255"/>
+      <text x="430" y="330" fill="#e1d7f9">N1 import-ready</text>
+    </g>
+    <g transform="translate(848 74) rotate(-12 110 130)">
+      <rect width="215" height="268" rx="20" fill="#746098"/>
+      <rect x="18" y="18" width="179" height="232" rx="13" fill="none" stroke="#bca9dd" stroke-opacity=".4"/>
+    </g>
+    <g transform="translate(873 62) rotate(8 110 135)">
+      <rect x="4" y="9" width="215" height="274" rx="20" fill="#100c20" opacity=".2"/>
+      <rect width="215" height="274" rx="20" fill="url(#card)"/>
+      <text x="107" y="43" fill="#776391" text-anchor="middle" font-size="10" font-weight="600" letter-spacing="1.8">ONE WORD AT A TIME</text>
+      <text x="107" y="144" fill="#423259" text-anchor="middle" font-family="Yu Gothic, Meiryo, sans-serif" font-size="57" font-weight="600">学ぶ</text>
+      <path d="M73 174h68" stroke="#cec1e6"/>
+      <text x="107" y="209" fill="#776391" text-anchor="middle" font-size="19">to learn</text>
+      <text x="107" y="245" fill="#8e7ea4" text-anchor="middle" font-size="11">RECALL · REVEAL · REPEAT</text>
+    </g>
+    <path d="m821 74 5 13 13 5-13 5-5 13-5-13-13-5 13-5Z" fill="#c5b1ff"/>
+    <path d="m1125 281 4 10 10 4-10 4-4 10-4-10-10-4 10-4Z" fill="#c5b1ff"/>
+  </g>
+</svg>
